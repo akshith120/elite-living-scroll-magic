@@ -1,9 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  
+  // Always show scrolled state on onboard page
+  const shouldShowScrolledState = isScrolled || location.pathname === '/onboard';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,7 +21,7 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-      isScrolled 
+      shouldShowScrolledState 
         ? 'bg-white/95 backdrop-blur-sm shadow-lg py-4' 
         : 'bg-white py-8'
     }`}>
@@ -27,14 +31,14 @@ const Navigation = () => {
           <div className="text-3xl font-bold text-teal-600">
             {/* Initial state: KOHINOOR ELITE LIVING all in one line */}
             <div className={`transition-all duration-500 ease-in-out ${
-              isScrolled ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'
+              shouldShowScrolledState ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'
             }`}>
               <span>KOHINOOR ELITE LIVING</span>
             </div>
             
             {/* Scrolled state: KOHINOOR with Elite Living below */}
             <div className={`transition-all duration-500 ease-in-out ${
-              isScrolled ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'
+              shouldShowScrolledState ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'
             }`}>
               <div>KOHINOOR</div>
               <div className="text-teal-500 font-normal italic text-base -mt-1">
@@ -45,7 +49,7 @@ const Navigation = () => {
 
           {/* Centered Navigation Links when scrolled */}
           <div className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-500 ease-in-out ${
-            isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            shouldShowScrolledState ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}>
             <div className="flex items-center gap-8 text-sm">
               <a href="#services" className="text-teal-600 hover:text-teal-700 transition-colors">
@@ -73,7 +77,7 @@ const Navigation = () => {
 
         {/* Navigation Links below logo when not scrolled */}
         <div className={`transition-all duration-500 ease-in-out ${
-          isScrolled ? 'opacity-0 pointer-events-none h-0 overflow-hidden' : 'opacity-100 mt-6'
+          shouldShowScrolledState ? 'opacity-0 pointer-events-none h-0 overflow-hidden' : 'opacity-100 mt-6'
         }`}>
           <div className="flex items-center gap-8 text-base">
             <a href="#services" className="text-teal-600 hover:text-teal-700 transition-colors">
