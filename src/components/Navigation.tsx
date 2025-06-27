@@ -18,79 +18,71 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-sm shadow-lg py-3' 
+        ? 'bg-white/95 backdrop-blur-sm shadow-lg py-4' 
         : 'bg-white py-8'
     }`}>
       <div className="max-w-7xl mx-auto px-6">
-        {/* Initial state - buttons under logo */}
-        <div className={`transition-all duration-500 ease-in-out ${
-          isScrolled ? 'opacity-0 pointer-events-none absolute' : 'opacity-100'
-        }`}>
-          <div className="flex flex-col items-center text-center">
-            {/* Logo */}
-            <div className="text-3xl font-bold text-teal-600 mb-6">
-              <div className="flex items-center gap-3">
-                <span>KOHINOOR</span>
-                <span className="text-teal-500 font-normal italic text-xl">
-                  Elite Living
-                </span>
-              </div>
+        <div className="flex items-start justify-between">
+          {/* Logo - always on the left */}
+          <div className="text-3xl font-bold text-teal-600">
+            <div className="flex items-center gap-3">
+              <span>KOHINOOR</span>
+              <span className={`text-teal-500 font-normal italic text-xl transition-all duration-500 ease-in-out ${
+                isScrolled ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100'
+              }`}>
+                Elite Living
+              </span>
             </div>
+            {/* Elite Living appears below KOHINOOR when scrolled */}
+            <div className={`text-teal-500 font-normal italic text-base transition-all duration-500 ease-in-out ${
+              isScrolled ? 'opacity-100 -mt-1' : 'opacity-0 h-0 overflow-hidden'
+            }`}>
+              Elite Living
+            </div>
+          </div>
 
-            {/* Navigation Links under logo */}
-            <div className="flex items-center gap-8 text-base">
-              <a href="#services" className="text-teal-600 hover:text-teal-700 transition-colors">
-                What do we do?
-              </a>
-              <a href="#about" className="text-teal-600 hover:text-teal-700 transition-colors">
-                About us
-              </a>
-              <a href="#knowledge" className="text-teal-600 hover:text-teal-700 transition-colors">
-                Knowledge corner
-              </a>
-              <Link 
-                to="/onboard" 
-                className="bg-white border-2 border-teal-600 text-teal-600 px-6 py-2 rounded-full hover:bg-teal-600 hover:text-white transition-all duration-300"
-              >
-                Onboard your community
-              </Link>
-            </div>
+          {/* Onboard button - always in the same position (top right) */}
+          <div className="flex-shrink-0">
+            <Link 
+              to="/onboard" 
+              className="bg-white border-2 border-teal-600 text-teal-600 px-6 py-2 rounded-full hover:bg-teal-600 hover:text-white transition-all duration-300"
+            >
+              Onboard your community
+            </Link>
           </div>
         </div>
 
-        {/* Scrolled state - buttons beside logo */}
+        {/* Navigation Links - transition from below logo to beside logo */}
         <div className={`transition-all duration-500 ease-in-out ${
-          isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none absolute'
+          isScrolled ? 'opacity-0 pointer-events-none h-0 overflow-hidden' : 'opacity-100 mt-6'
         }`}>
-          <div className="flex items-center justify-between">
-            {/* Logo - stacked vertically */}
-            <div className="text-xl font-bold text-teal-600">
-              <div className="flex flex-col">
-                <span>KOHINOOR</span>
-                <span className="text-teal-500 font-normal italic text-base -mt-1">
-                  Elite Living
-                </span>
-              </div>
-            </div>
+          <div className="flex items-center gap-8 text-base">
+            <a href="#services" className="text-teal-600 hover:text-teal-700 transition-colors">
+              What do we do?
+            </a>
+            <a href="#about" className="text-teal-600 hover:text-teal-700 transition-colors">
+              About us
+            </a>
+            <a href="#knowledge" className="text-teal-600 hover:text-teal-700 transition-colors">
+              Knowledge corner
+            </a>
+          </div>
+        </div>
 
-            {/* Navigation Links beside logo */}
-            <div className="flex items-center gap-8 text-sm">
-              <a href="#services" className="text-teal-600 hover:text-teal-700 transition-colors">
-                What do we do?
-              </a>
-              <a href="#about" className="text-teal-600 hover:text-teal-700 transition-colors">
-                About us
-              </a>
-              <a href="#knowledge" className="text-teal-600 hover:text-teal-700 transition-colors">
-                Knowledge corner
-              </a>
-              <Link 
-                to="/onboard" 
-                className="bg-white border-2 border-teal-600 text-teal-600 px-6 py-2 rounded-full hover:bg-teal-600 hover:text-white transition-all duration-300"
-              >
-                Onboard your community
-              </Link>
-            </div>
+        {/* Navigation Links - beside logo when scrolled */}
+        <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-in-out ${
+          isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}>
+          <div className="flex items-center gap-8 text-sm">
+            <a href="#services" className="text-teal-600 hover:text-teal-700 transition-colors">
+              What do we do?
+            </a>
+            <a href="#about" className="text-teal-600 hover:text-teal-700 transition-colors">
+              About us
+            </a>
+            <a href="#knowledge" className="text-teal-600 hover:text-teal-700 transition-colors">
+              Knowledge corner
+            </a>
           </div>
         </div>
       </div>
