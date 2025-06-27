@@ -22,26 +22,45 @@ const Navigation = () => {
         : 'bg-white py-8'
     }`}>
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-start justify-between">
-          {/* Logo - always on the left */}
+        <div className="flex items-center justify-between">
+          {/* Logo Section */}
           <div className="text-3xl font-bold text-teal-600">
-            <div className="flex items-center gap-3">
-              <span>KOHINOOR</span>
-              <span className={`text-teal-500 font-normal italic text-xl transition-all duration-500 ease-in-out ${
-                isScrolled ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100'
-              }`}>
-                Elite Living
-              </span>
-            </div>
-            {/* Elite Living appears below KOHINOOR when scrolled */}
-            <div className={`text-teal-500 font-normal italic text-base transition-all duration-500 ease-in-out ${
-              isScrolled ? 'opacity-100 -mt-1' : 'opacity-0 h-0 overflow-hidden'
+            {/* Initial state: KOHINOOR ELITE LIVING all in one line */}
+            <div className={`transition-all duration-500 ease-in-out ${
+              isScrolled ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'
             }`}>
-              Elite Living
+              <span>KOHINOOR ELITE LIVING</span>
+            </div>
+            
+            {/* Scrolled state: KOHINOOR with Elite Living below */}
+            <div className={`transition-all duration-500 ease-in-out ${
+              isScrolled ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'
+            }`}>
+              <div>KOHINOOR</div>
+              <div className="text-teal-500 font-normal italic text-base -mt-1">
+                Elite Living
+              </div>
             </div>
           </div>
 
-          {/* Onboard button - always in the same position (top right) */}
+          {/* Centered Navigation Links when scrolled */}
+          <div className={`absolute left-1/2 transform -translate-x-1/2 transition-all duration-500 ease-in-out ${
+            isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}>
+            <div className="flex items-center gap-8 text-sm">
+              <a href="#services" className="text-teal-600 hover:text-teal-700 transition-colors">
+                What do we do?
+              </a>
+              <a href="#about" className="text-teal-600 hover:text-teal-700 transition-colors">
+                About us
+              </a>
+              <a href="#knowledge" className="text-teal-600 hover:text-teal-700 transition-colors">
+                Knowledge corner
+              </a>
+            </div>
+          </div>
+
+          {/* Onboard button - always centered in navbar */}
           <div className="flex-shrink-0">
             <Link 
               to="/onboard" 
@@ -52,28 +71,11 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Navigation Links - transition from below logo to beside logo */}
+        {/* Navigation Links below logo when not scrolled */}
         <div className={`transition-all duration-500 ease-in-out ${
           isScrolled ? 'opacity-0 pointer-events-none h-0 overflow-hidden' : 'opacity-100 mt-6'
         }`}>
           <div className="flex items-center gap-8 text-base">
-            <a href="#services" className="text-teal-600 hover:text-teal-700 transition-colors">
-              What do we do?
-            </a>
-            <a href="#about" className="text-teal-600 hover:text-teal-700 transition-colors">
-              About us
-            </a>
-            <a href="#knowledge" className="text-teal-600 hover:text-teal-700 transition-colors">
-              Knowledge corner
-            </a>
-          </div>
-        </div>
-
-        {/* Navigation Links - beside logo when scrolled */}
-        <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-in-out ${
-          isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}>
-          <div className="flex items-center gap-8 text-sm">
             <a href="#services" className="text-teal-600 hover:text-teal-700 transition-colors">
               What do we do?
             </a>
