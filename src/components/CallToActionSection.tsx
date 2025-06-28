@@ -9,7 +9,7 @@ const CallToActionSection = () => {
         <div className="flex items-center justify-center gap-4 text-3xl">
           <Link 
             to="/onboard"
-            className="bg-teal-600 text-white px-8 py-3 rounded hover:bg-teal-700 transition-colors font-medium"
+            className="bg-teal-600 text-white px-4 py-3 rounded-[10px] hover:bg-teal-700 transition-colors font-small"
           >
             Click here
           </Link>
