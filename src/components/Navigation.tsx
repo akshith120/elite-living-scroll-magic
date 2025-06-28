@@ -31,14 +31,14 @@ const Navigation = () => {
     effectiveScrollProgress > 0.1 ? 'bg-white/95 backdrop-blur-sm shadow-lg' : 'bg-white';
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${backgroundOpacity} ${navPadding}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${backgroundOpacity} ${navPadding}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
           <div className="text-3xl font-bold text-teal-600 relative">
             {/* Initial state: KOHINOOR ELITE LIVING all in one line and capitals */}
             <div 
-              className="transition-all duration-300 ease-out"
+              className="transition-all duration-500 ease-out"
               style={{
                 opacity: 1 - effectiveScrollProgress,
                 transform: `translateY(${effectiveScrollProgress * -10}px)`,
@@ -51,7 +51,7 @@ const Navigation = () => {
             
             {/* Scrolled state: KOHINOOR with Elite Living below */}
             <div 
-              className="transition-all duration-300 ease-out"
+              className="transition-all duration-500 ease-out"
               style={{
                 opacity: effectiveScrollProgress,
                 transform: `translateY(${(1 - effectiveScrollProgress) * 10}px)`,
@@ -61,7 +61,13 @@ const Navigation = () => {
               }}
             >
               <div>KOHINOOR</div>
-              <div className="text-teal-500 font-normal italic text-base -mt-1">
+              <div 
+                className="text-teal-500 font-normal italic text-base -mt-1 transition-all duration-500 ease-out"
+                style={{
+                  transform: `translateY(${(1 - effectiveScrollProgress) * -20}px)`,
+                  opacity: effectiveScrollProgress
+                }}
+              >
                 Elite Living
               </div>
             </div>
@@ -69,10 +75,10 @@ const Navigation = () => {
 
           {/* Centered Navigation Links when scrolled */}
           <div 
-            className="absolute left-1/2 transform -translate-x-1/2 transition-all duration-300 ease-out"
+            className="absolute left-1/2 transform -translate-x-1/2 transition-all duration-500 ease-out"
             style={{
               opacity: effectiveScrollProgress,
-              transform: `translate(-50%, ${(1 - effectiveScrollProgress) * 20}px)`,
+              transform: `translate(-50%, ${(1 - effectiveScrollProgress) * 30}px)`,
               pointerEvents: effectiveScrollProgress > 0.3 ? 'auto' : 'none'
             }}
           >
@@ -102,10 +108,10 @@ const Navigation = () => {
 
         {/* Navigation Links below logo when not scrolled */}
         <div 
-          className="transition-all duration-300 ease-out"
+          className="transition-all duration-500 ease-out"
           style={{
             opacity: 1 - effectiveScrollProgress,
-            transform: `translateY(${effectiveScrollProgress * -10}px)`,
+            transform: `translateY(${effectiveScrollProgress * -30}px)`,
             marginTop: effectiveScrollProgress < 1 ? '24px' : '0px',
             height: effectiveScrollProgress === 1 ? '0px' : 'auto',
             overflow: effectiveScrollProgress === 1 ? 'hidden' : 'visible',
