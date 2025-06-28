@@ -14,7 +14,7 @@ const CallToActionSection = () => {
             Click here
           </Link>
           <span className="text-orange-500 font-light">
-            to be the One to get you gated community healthy!
+            to be the One to get you <del>gated</del> community healthy!
           </span>
         </div>
       </div>
